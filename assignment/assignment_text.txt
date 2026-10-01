@@ -1,0 +1,229 @@
+EDXSO AI Engineer Intern – Assignment 1
+Automated Micro-Influencer Outreach System
+Objective
+Build an automated system that discovers relevant micro-influencers, filters and
+classifies them based on predefined criteria, enriches their profiles with useful
+information, and generates personalized collaboration outreach messages.
+The system should demonstrate your ability to work with APIs, web scraping/data
+extraction, data processing, automation, AI/LLM-based personalization, and
+workflow design.
+1. Influencer Discovery
+Identify micro-influencers from a chosen niche such as:
+● Fitness
+● Fintech
+● Beauty
+● Fashion
+● Crypto
+● Parenting
+● Gaming
+● Lifestyle
+● Technology
+You may use:
+● Instagram
+● YouTube
+● TikTok
+● Hashtag searches
+● Public influencer directories
+● UGC marketplaces such as Collabstr, Aspire, or Grin
+● Social media scraping/data extraction tools
+● Creator newsletters and creator-spotlight pages
+
+Definition
+A micro-influencer should generally have 5,000–100,000 followers or demonstrate
+equivalent audience engagement.
+Requirement
+Your system should fetch at least 50 influencers for the test run.
+2. Filtering & Classification
+Build logic to automatically filter and classify the discovered influencers.
+Your system should consider:
+● Category / niche
+● Audience demographics
+● Geography, if available
+● Social media platform
+● Follower count
+● Engagement rate
+● Brand-fit criteria
+● Content relevance
+Minimum Requirement
+Implement at least one complete filtering category.
+Example: Fashion & Beauty influencers.
+The final output should clearly identify which influencers passed or failed the filtering
+criteria and why.
+3. Profile Enrichment
+For every shortlisted influencer, enrich the profile with the following information:
+
+Field Requirement
+Influencer Name Mandatory
+Platform Mandatory
+Profile URL Mandatory
+Follower Count Mandatory
+Engagement Rate Mandatory
+Category / Niche Mandatory
+Content Themes Mandatory
+Contact Email Mandatory
+Instagram / YouTube / TikTok Optional
+Website Optional
+Audience Age Optional
+Audience Gender Optional
+Audience Geography Optional
+Minimum Enrichment Requirement
+Each influencer record must contain:
+Contact email + profile metrics + niche/content context
+If an email cannot be found, clearly mark it as "Not Found" rather than generating
+or guessing one.
+
+4. Message Personalization
+The system should automatically generate two types of personalized outreach
+messages for each qualified influencer.
+A. Email Collaboration Pitch
+Length: 60–90 words
+The email should reference relevant personalization signals such as:
+● Influencer's niche
+● Content tone/style
+● Recent content
+● Relevant audience
+● Proposed collaboration
+● Value proposition
+Possible collaboration angles include:
+● Sponsorship
+● Affiliate campaign
+● UGC content creation
+● Brand ambassador program
+● Paid product placement
+● Barter collaboration
+B. Instagram DM
+Length: 15–30 words
+The DM should be short, natural, and personalized based on the influencer's content
+and niche.
+Example Personalization
+Instead of:
+"Hi, we would like to collaborate with you."
+The system should generate something closer to:
+
+"Hi Sarah, loved your recent skincare routine content. Your
+beauty-focused audience looks like a great fit for our upcoming UGC
+campaign."
+The system should generate these messages dynamically rather than using one
+fixed template for every influencer.
+5. Sending Layer
+Build a sending layer that demonstrates how the generated outreach would be
+delivered.
+You may implement this using:
+● Gmail API
+● SMTP
+● Email automation tools
+● Instagram/Meta APIs where permitted
+● n8n
+● Make
+● Zapier
+● Another appropriate automation workflow
+Requirements
+The sending layer should:
+1. Select influencers with a valid contact email.
+2. Retrieve their personalized email message.
+3. Send or simulate sending the email.
+4. Record the sending status.
+5. Prevent duplicate outreach.
+6. Maintain a basic outreach log.
+For Instagram DMs, if direct automated sending is not technically or legally available
+through the chosen API, do not bypass platform restrictions. Instead,
+demonstrate the generated DM and create a simulated/manual sending workflow.
+6. Suggested Workflow
+
+Your overall system can follow this flow:
+Discovery → Data Collection → Filtering → Enrichment → AI Personalization
+→ Review → Sending → Tracking
+Example:
+Social Platforms / Directories
+↓
+Influencer Discovery
+↓
+50+ Profiles
+↓
+Filtering & Classification
+↓
+Profile Enrichment
+↓
+AI Personalization
+↓
+Email + Instagram DM
+↓
+Sending Layer
+↓
+Outreach Tracker
+7. Expected Output
+Submit the following:
+A. Working System
+A functional prototype demonstrating the complete workflow.
+
+B. Influencer Dataset
+A dataset containing at least 50 discovered influencers.
+Recommended format:
+Nam Platfor Followe Engagem Nich Ema Profile Content Stat
+e m rs ent e il URL Theme us
+C. Personalized Messages
+Show the generated:
+● Email pitch
+● Instagram DM
+for the shortlisted influencers.
+D. Outreach Tracker
+Include fields such as:
+Influencer Email Message Sent Date Status
+Generated
+E. Documentation
+Provide a short README explaining:
+● Technology stack
+● APIs/tools used
+● Data sources
+● Discovery methodology
+● Filtering logic
+● Enrichment process
+● AI model/prompt used
+● Personalization logic
+● Sending mechanism
+● Limitations
+● Setup instructions
+
+8. Technical Expectations
+The assignment should demonstrate practical engineering skills.
+You are encouraged to use:
+● Python / JavaScript
+● REST APIs
+● Web scraping where permitted
+● Data processing
+● LLM APIs
+● Prompt engineering
+● n8n / Make / Zapier
+● Databases or structured storage
+● Email APIs
+● Automation workflows
+The implementation should be modular, reusable, and reasonably error-tolerant.
+9. Evaluation Criteria
+Your submission will be evaluated on:
+1. Functionality – Does the complete workflow work?
+2. Data Quality – Are the influencer records accurate and useful?
+3. Automation – How much of the process is automated?
+4. Filtering Logic – Is the classification meaningful?
+5. Profile Enrichment – Is sufficient information collected?
+6. AI Personalization – Are messages genuinely personalized?
+7. Engineering Quality – Is the code/workflow structured and maintainable?
+8. Error Handling – Does the system handle missing or invalid data?
+9. Documentation – Can another developer understand and run the project?
+10. Scalability – Could the system be extended from 50 to 500+ influencers?
+10. Submission Requirements
+Submit:
+● GitHub repository or project files
+
+● README/documentation
+● Working demo or screenshots/video
+● Influencer dataset
+● Sample personalized outreach messages
+● Automation workflow, if applicable
+● Setup instructions
+● List of APIs/tools used
+Important
+Do not submit fabricated influencer information, guessed email addresses, or fake
+engagement metrics. Clearly identify unavailable data.
+The goal is to demonstrate a working AI-powered influencer discovery and
+outreach pipeline, not merely a static dataset or presentation.
+
