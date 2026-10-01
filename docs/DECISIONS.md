@@ -94,15 +94,26 @@ class Sender(Protocol):
 
 ---
 
-## 7. Deduplication: Message Hash in OutreachLog
+## 7. Duplicate Outreach Prevention: Composite Key with Message Hash
 
-**Decision:** Prevent duplicate outreach by storing SHA256(message_body) in OutreachLog.
+**Decision:** Prevent duplicate outreach using a composite unique constraint on `(influencer_id, channel, message_hash)` in OutreachLog, with `message_hash` as SHA256 of the message body.
 
 **Rationale:**
-- Simple, deterministic, no external dependencies
+- Primary deduplication key: `influencer_id + channel + message_hash` ensures same influencer can't receive identical message on same channel
+- `message_hash` provides content-based deduplication (catches regenerated messages with same content)
 - Works across sessions (persisted in DB)
-- Applies per-channel (email vs DM) and per-influencer
-- Query before send: `WHERE influencer_id = ? AND message_hash = ? AND channel = ?`
+- Simpler than campaign-based deduplication (campaign not implemented in Phase 2)
+- Per-channel: email and Instagram DM tracked separately
+
+**Limitation:** Without campaign support, re-sending the same message content to the same influencer on the same channel is blocked even if intended for a different campaign. This is acceptable for Phase 2; campaign-aware deduplication can be added later.
+
+**Implementation:**
+```python
+__table_args__ = (
+    UniqueConstraint("influencer_id", "channel", "message_hash", name="uq_outreach_influencer_channel_hash"),
+    ...
+)
+```
 
 ---
 

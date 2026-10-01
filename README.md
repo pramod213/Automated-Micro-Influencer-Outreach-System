@@ -4,7 +4,7 @@ An AI-powered system for discovering, filtering, enriching, and reaching out to 
 
 ## Current Phase
 
-**Phase 1 — Project Setup**
+**Phase 2 — Database & Domain Models**
 
 ## Requirements
 
@@ -48,8 +48,27 @@ pip install -r requirements.txt
 # Copy example configuration
 cp .env.example .env
 
-# Edit .env as needed (optional for Phase 1)
+# Edit .env as needed (optional for Phase 2)
 ```
+
+## Database
+
+This phase adds a PostgreSQL-compatible database layer using SQLAlchemy 2.x and Alembic migrations.
+
+### Run Migrations
+
+```bash
+# Apply all migrations (creates tables)
+alembic upgrade head
+
+# Create a new migration after model changes
+alembic revision --autogenerate -m "Description of changes"
+
+# View migration history
+alembic history
+```
+
+The development database is SQLite (`./data/app.db`) by default. Configure `DATABASE_URL` in `.env` for PostgreSQL.
 
 ## Run Backend
 
@@ -89,7 +108,7 @@ pytest -v
 
 ## Current Scope
 
-This repository currently implements **only Phase 1 — Project Setup**:
+This repository currently implements **Phase 1 — Project Setup** and **Phase 2 — Database & Domain Models**:
 
 - ✅ FastAPI backend with `/health` endpoint
 - ✅ Configuration management via Pydantic Settings
@@ -97,9 +116,13 @@ This repository currently implements **only Phase 1 — Project Setup**:
 - ✅ Streamlit frontend skeleton with backend status display
 - ✅ Basic test suite (health endpoint tests)
 - ✅ Development environment configuration
+- ✅ SQLAlchemy 2.x models (Influencer, Message, OutreachLog)
+- ✅ Database relationships and constraints
+- ✅ Alembic migrations
+- ✅ Repository layer for data access
+- ✅ Database tests (CRUD, relationships, constraints)
 
 **Not yet implemented (future phases):**
-- Database models and migrations
 - Influencer discovery (Apify, social media APIs)
 - Filtering and classification logic
 - Profile enrichment
@@ -111,7 +134,7 @@ This repository currently implements **only Phase 1 — Project Setup**:
 
 ## Future Phases
 
-1. **Phase 2** — Database Models & Migrations (SQLAlchemy, Alembic)
+1. **Phase 2** — Database Models & Migrations (SQLAlchemy, Alembic) ✅
 2. **Phase 3** — Influencer Discovery (Apify integration, 50+ profiles)
 3. **Phase 4** — Filtering & Classification (configurable rules engine)
 4. **Phase 5** — Profile Enrichment (email extraction, theme analysis)
